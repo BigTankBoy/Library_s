@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>전자도서관</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="auth-buttons">
+            <a href="/login" class="auth-btn login-btn">로그인</a>
+            <a href="/register" class="auth-btn register-btn">회원가입</a>
+        </div>
+        <h1>📚 전자도서관 📚</h1>
+        <p>다양한 장르의 책을 만나보세요</p>
+    </div>
+
+    <div class="main-container">
+        <!-- 검색 박스 -->
+        <div class="search-box">
+            <form action="/search" method="get" class="search-form">
+                <input type="text" name="q" placeholder="책 제목 검색" class="search-input">
+                <button class="search-button">검색하기</button>
+            </form>
+        </div>
+
+        <!-- 장르 섹션 -->
+        <div class="genre-section">
+            <h2 class="section-title">장르별 도서</h2>
+            <ul class="genre-grid">
+                {% for genre in genres %}
+                <li class="genre-item">
+                    <a href="/genre?genre={{ genre['genre'] }}" class="genre-link">
+                        <span class="genre-icon">📖</span>
+                        <span>{{ genre['genre'] }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

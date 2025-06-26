@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ genre }} 장르</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='genre.css') }}">
+</head>
+<body>
+    <div class="page-header">
+        <h1 class="page-title">{{ genre }} 장르 책 목록</h1>
+    </div>
+
+    <div class="main-container">
+        <!-- 통계 정보 -->
+        <div class="stats-bar">
+            <span class="book-count">{{ books|length }}</span>
+        </div>
+
+        <!-- 책 목록 섹션 -->
+        <div class="books-section">
+            {% if books %}
+                <ul class="books-grid">
+                    {% for book in books %}
+                    <li class="book-item">
+                        <a href="/book/{{ book['id'] }}" class="book-link">
+                            <span>{{ book['title'] }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="empty-message">
+                    이 장르에는 아직 책이 없습니다.
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- 네비게이션 -->
+        <div class="navigation">
+            <a href="/" class="home-link">홈으로 돌아가기</a>
+        </div>
+    </div>
+</body>
+</html>

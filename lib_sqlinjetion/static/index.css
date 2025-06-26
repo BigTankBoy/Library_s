@@ -1,0 +1,324 @@
+/* 메인 페이지 (index.html) 전용 CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* 헤더 영역 */
+.header {
+    background: linear-gradient(135deg, #95a2dd 0%, #baa0d6 100%);
+    padding: 60px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 인증 버튼들 */
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.auth-btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.login-btn {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.login-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.register-btn {
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.register-btn:hover {
+    background: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    opacity: 0.3;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    max-width: 1200px;
+    margin: -30px auto 0;
+    padding: 0 20px 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* 검색 박스 */
+.search-box {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    margin-top: 66px;
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    padding: 18px 25px;
+    border: 2px solid #e9ecef;
+    border-radius: 50px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.search-input:focus {
+    border-color: #c7c7c7;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-button {
+    padding: 18px 35px;
+    background: #3f69f3;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    background: #2d5eff;
+    transform: translateY(-2px);
+    
+}
+
+/* 장르 섹션 */
+.genre-section {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+}
+
+/* 장르 그리드 */
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    list-style: none;
+}
+
+.genre-item {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.genre-item:nth-child(1) { animation-delay: 0.1s; }
+.genre-item:nth-child(2) { animation-delay: 0.2s; }
+.genre-item:nth-child(3) { animation-delay: 0.3s; }
+.genre-item:nth-child(4) { animation-delay: 0.4s; }
+.genre-item:nth-child(5) { animation-delay: 0.5s; }
+.genre-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.genre-link {
+    display: block;
+    padding: 25px;
+    background: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.genre-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #a7a7a7;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+    
+    
+}
+
+.genre-link span {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.genre-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.genre-link:hover::before {
+    transform: translateY(0);
+}
+
+.genre-link:hover span {
+    color: white;
+}
+
+/* 추천 아이콘 */
+.genre-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .auth-buttons {
+        position: static;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .main-container {
+        padding: 0 15px 30px;
+    }
+    
+    .search-box {
+        padding: 25px 20px;
+    }
+    
+    .search-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-input,
+    .search-button {
+        width: 100%;
+    }
+    
+    .genre-section {
+        padding: 30px 20px;
+    }
+    
+    .genre-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 40px 0;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .genre-link {
+        padding: 20px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>검색 결과 - {{ query }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+</head>
+<body>
+    <div class="search-header">
+        <h1 class="search-title">검색 결과</h1>
+        <div class="search-query">
+            "<span class="query-text">{{ query }}</span>"
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- 검색 결과 통계 -->
+        <div class="search-stats">
+            <div class="search-stats-text">
+                <span class="results-count">{{ books|length }}</span>개의 검색 결과
+            </div>
+            <a href="{{ url_for('index') }}" class="home-link">홈으로 돌아가기</a>
+        </div>
+
+        <!-- 검색 결과 섹션 -->
+        <div class="results-section">
+            {% if books %}
+                <ul class="results-grid">
+                    {% for row in books %}
+                        <li class="result-item">
+                            <span class="result-link">{{ row['result'] }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="no-results">
+                    <div class="no-results-icon">🔍</div>
+                    <h3>검색 결과가 없습니다</h3>
+                    <p>"{{ query }}"에 대한 검색 결과를 찾을 수 없습니다.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - Blind SQLi 전자도서관</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>로그인</h1>
+                <p>도서관 계정으로 로그인하세요</p>
+            </div>
+            
+            <form method="POST" class="auth-form">
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="아이디를 입력하세요" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                
+                <button type="submit" class="auth-submit-btn">로그인</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>계정이 없으신가요? <a href="/register">회원가입</a></p>
+                <a href="/" class="back-link">메인으로 돌아가기</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

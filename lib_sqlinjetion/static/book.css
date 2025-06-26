@@ -1,0 +1,246 @@
+/* 책 상세 페이지 (book.html) 전용 CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 책 컨테이너 */
+.book-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeInScale 0.8s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 책 헤더 */
+.book-header {
+    background: linear-gradient(135deg, #95a2dd 0%, #baa0d6 100%);
+    padding: 50px 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.book-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    opacity: 0.3;
+}
+
+.book-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.book-author {
+    font-size: 1.3rem;
+    font-weight: 400;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+.book-author::before {
+    content: '✍️';
+    margin-right: 8px;
+}
+
+/* 책 내용 */
+.book-content {
+    padding: 50px 40px;
+}
+
+.content-text {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #444;
+    text-align: justify;
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+    border-left: 5px solid #000;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.content-text::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 4rem;
+    color: #ddd;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.content-text::after {
+    content: '"';
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 4rem;
+    color: #ddd;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+/* 네비게이션 */
+.book-nav {
+    text-align: center;
+    padding: 0 40px 40px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 30px;
+    background: #3f69f3;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-button::before {
+    content: '←';
+    margin-right: 8px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #2d5eff;
+}
+
+
+/* 책 메타 정보 */
+.book-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.meta-item {
+    text-align: center;
+    color: #666;
+}
+
+.meta-label {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.meta-value {
+    font-weight: 600;
+    color: #000;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .book-container {
+        margin: 20px auto;
+        border-radius: 15px;
+    }
+    
+    .book-header {
+        padding: 40px 25px;
+    }
+    
+    .book-title {
+        font-size: 2rem;
+    }
+    
+    .book-author {
+        font-size: 1.1rem;
+    }
+    
+    .book-content {
+        padding: 40px 25px;
+    }
+    
+    .content-text {
+        font-size: 1.1rem;
+        padding: 30px 25px;
+        line-height: 1.8;
+    }
+    
+    .book-nav {
+        padding: 0 25px 30px;
+    }
+    
+    .back-button {
+        width: 100%;
+        justify-content: center;
+        padding: 18px;
+    }
+    
+    .book-meta {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-title {
+        font-size: 1.7rem;
+    }
+    
+    .content-text {
+        text-align: left;
+        font-size: 1rem;
+        padding: 25px 20px;
+    }
+    
+    .content-text::before,
+    .content-text::after {
+        font-size: 3rem;
+    }
+}
